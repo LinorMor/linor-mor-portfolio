@@ -2,3 +2,10 @@ Linor_Mor_Brand_Concept.docx
 assets/portrait-source.png
 .claude/
 .DS_Store
+
+# raw uploaded video sources (compressed versions live in assets/videos/)
+/*.MP4
+/*.MOV
+/*.mp4
+/*.mov
+/linor_mor3_qr.png

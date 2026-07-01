@@ -344,26 +344,76 @@ html[dir="rtl"] .pillars-track { animation-direction: reverse; }
 }
 .pf-media {
   aspect-ratio: 4/5;
-  background: var(--tone, var(--sand));
-  display: flex;
-  align-items: flex-end;
-  padding: 1rem;
+  background: var(--ink);
   position: relative;
+  overflow: hidden;
 }
 .pf-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(28,27,25,0) 40%, rgba(28,27,25,0.28) 100%);
+  background: linear-gradient(180deg, rgba(28,27,25,0) 50%, rgba(28,27,25,0.35) 100%);
+  pointer-events: none;
 }
+.pf-poster, .pf-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+.pf-video { background: var(--ink); cursor: default; }
 .pf-index {
-  position: relative;
+  position: absolute;
   z-index: 1;
+  inset-inline-start: 1rem;
+  bottom: 1rem;
   font-family: var(--serif);
   font-style: italic;
   font-size: 2.4rem;
   color: rgba(244,241,236,0.85);
+  pointer-events: none;
 }
+.pf-play {
+  position: absolute;
+  z-index: 2;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(244,241,236,0.7);
+  background: rgba(28,27,25,0.35);
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.pf-play::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 8px 0 8px 14px;
+  border-color: transparent transparent transparent var(--ivory);
+}
+.pf-play:hover { background: var(--clay); transform: translate(-50%, -50%) scale(1.08); }
+.pf-clip-dots {
+  position: absolute;
+  z-index: 2;
+  top: 0.9rem;
+  inset-inline-end: 0.9rem;
+  display: flex;
+  gap: 0.4rem;
+}
+.pf-clip-dots button {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(244,241,236,0.8);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.pf-clip-dots button.active { background: var(--ivory); }
 .pf-body { padding: 1.3rem 1.3rem 1.6rem; }
 .pf-body h3 {
   font-family: var(--serif);

@@ -45,6 +45,40 @@
     a.addEventListener("click", () => header.classList.remove("nav-open"));
   });
 
+  // portfolio video players
+  document.querySelectorAll(".pf-media").forEach((media) => {
+    const clips = JSON.parse(media.dataset.clips || "[]");
+    if (!clips.length) return;
+    let activeIdx = 0;
+    const poster = media.querySelector(".pf-poster");
+    const playBtn = media.querySelector(".pf-play");
+    const dots = media.querySelectorAll(".pf-clip-dots button");
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", (e) => {
+        e.stopPropagation();
+        activeIdx = Number(dot.dataset.idx);
+        poster.src = clips[activeIdx].poster;
+        dots.forEach((d) => d.classList.toggle("active", d === dot));
+      });
+    });
+
+    const playClip = () => {
+      const clip = clips[activeIdx];
+      const video = document.createElement("video");
+      video.src = clip.src;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.className = "pf-video";
+      media.innerHTML = "";
+      media.appendChild(video);
+    };
+
+    playBtn.addEventListener("click", playClip);
+    poster.addEventListener("click", playClip);
+  });
+
   // scroll reveal
   const revealEls = document.querySelectorAll(".reveal");
   const io = new IntersectionObserver(
