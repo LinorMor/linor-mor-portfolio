@@ -466,6 +466,118 @@ html[dir="rtl"] .pillars-track { animation-direction: reverse; }
   max-width: 42ch;
 }
 
+/* ---------- PRICING ---------- */
+.section-head p { color: rgba(28,27,25,0.7); max-width: 56ch; }
+
+.display-sm {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  margin: 0 0 0.6rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.pricing-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+
+.pricing-sub {
+  max-width: 640px;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.2rem);
+}
+.pricing-sub p { color: rgba(28,27,25,0.7); margin: 0; }
+
+.price-card {
+  position: relative;
+  background: var(--ivory);
+  border: 1px solid var(--sand-dark);
+  border-radius: 3px;
+  padding: clamp(1.8rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+}
+.price-card.featured {
+  background: var(--ink);
+  color: var(--ivory);
+  border-color: var(--ink);
+}
+.price-card.featured .price-note,
+.price-card.featured .price-list li { color: rgba(244,241,236,0.72); }
+.price-card.featured .price-list li::before { color: var(--clay-light); }
+
+.price-badge {
+  position: absolute;
+  top: -0.7rem;
+  inset-inline-start: 1.6rem;
+  background: var(--clay);
+  color: var(--ivory);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+}
+
+.price-card h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 0 0 0.8rem;
+}
+.price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+.price-amount {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3vw, 2.1rem);
+}
+.price-unit {
+  font-size: 0.85rem;
+  color: rgba(28,27,25,0.55);
+}
+.price-card.featured .price-unit { color: rgba(244,241,236,0.6); }
+.price-note {
+  font-size: 0.85rem;
+  color: var(--clay);
+  margin: 0 0 1.2rem;
+}
+.price-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.price-list li {
+  font-size: 0.9rem;
+  color: rgba(28,27,25,0.75);
+  padding-inline-start: 1.1rem;
+  position: relative;
+}
+.price-list li::before {
+  content: "—";
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--clay);
+}
+
+.usage-grid .price-card { text-align: center; align-items: center; }
+.usage-grid .price-tag { justify-content: center; margin-top: 0.6rem; }
+
+.pricing-footnote {
+  font-size: 0.85rem;
+  color: rgba(28,27,25,0.55);
+  max-width: 70ch;
+  margin: 0;
+}
+
 /* ---------- CONTACT ---------- */
 .contact {
   background: var(--ink);
@@ -546,6 +658,7 @@ html[dir="rtl"] .pillars-track { animation-direction: reverse; }
   .about-card { position: static; margin-top: 1rem; display: inline-block; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: 1fr; }
+  .pricing-grid, .pricing-grid.two-col, .pricing-grid.three-col { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 520px) {
