@@ -200,20 +200,26 @@ html.lang-en .lt-en { opacity: 1; font-weight: 700; }
 
 .hero-frame {
   position: absolute;
-  top: 6rem;
-  inset-inline-end: -4vw;
-  width: min(30vw, 380px);
-  aspect-ratio: 3/4;
+  top: 5rem;
+  inset-inline-end: -2vw;
+  width: min(30vw, 400px);
+  aspect-ratio: 4/5;
+}
+.hero-frame::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1rem -1rem -1rem 1rem;
+  background: var(--clay);
   border-radius: 2px;
-  overflow: hidden;
-  opacity: 0.9;
-  filter: sepia(0.28) saturate(1.05) contrast(1.02);
-  box-shadow: 0 30px 60px -20px rgba(28,27,25,0.35);
 }
 .hero-frame-img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 50% 15%;
+  object-position: 50% 12%;
+  filter: saturate(1.03) contrast(1.02);
+  border-radius: 2px;
+  box-shadow: 0 30px 60px -20px rgba(28,27,25,0.35);
 }
 
 /* ---------- BUTTONS ---------- */
@@ -582,23 +588,35 @@ html[dir="rtl"] .pillars-track { animation-direction: reverse; }
 .contact {
   background: var(--ink);
   color: var(--ivory);
-  text-align: center;
 }
 .contact .eyebrow { color: var(--clay-light); }
-.contact-inner { display: flex; flex-direction: column; align-items: center; }
+.contact-inner {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+.contact-media { overflow: hidden; border-radius: 2px; }
+.contact-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: 50% 10%;
+  border-radius: 2px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+}
 .contact-sub {
   color: rgba(244,241,236,0.7);
   max-width: 50ch;
   margin: 0 0 2.4rem;
 }
-.contact-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.6rem; }
+.contact-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.6rem; }
 .contact .btn-ghost { border-color: var(--ivory); color: var(--ivory); }
 .contact .btn-ghost:hover { background: var(--ivory); color: var(--ink); }
 .contact-social {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
-  justify-content: center;
   font-size: 0.9rem;
 }
 .contact-social a {
@@ -659,6 +677,8 @@ html[dir="rtl"] .pillars-track { animation-direction: reverse; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: 1fr; }
   .pricing-grid, .pricing-grid.two-col, .pricing-grid.three-col { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .contact-media { max-width: 280px; }
 }
 
 @media (max-width: 520px) {

@@ -9,3 +9,5 @@ assets/portrait-source.png
 /*.mp4
 /*.mov
 /linor_mor3_qr.png
+/*.jpg
+!assets/**/*.jpg
