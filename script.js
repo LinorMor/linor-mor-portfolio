@@ -79,6 +79,34 @@
     poster.addEventListener("click", playClip);
   });
 
+  // about video: autoplay with sound once scrolled into view, pause when scrolled away
+  const aboutVideo = document.getElementById("aboutVideo");
+  if (aboutVideo) {
+    const tryPlay = () => {
+      aboutVideo.muted = false;
+      const playPromise = aboutVideo.play();
+      if (playPromise) {
+        playPromise.catch(() => {
+          aboutVideo.muted = true;
+          aboutVideo.play().catch(() => {});
+        });
+      }
+    };
+    const videoIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            tryPlay();
+          } else {
+            aboutVideo.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    videoIo.observe(aboutVideo);
+  }
+
   // scroll reveal
   const revealEls = document.querySelectorAll(".reveal");
   const io = new IntersectionObserver(
