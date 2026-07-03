@@ -489,6 +489,7 @@ html[dir="rtl"] .pillars-track { animation-direction: reverse; }
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 .pricing-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+.pricing-grid.single-col { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); }
 
 .pricing-sub {
   max-width: 640px;
@@ -671,7 +672,13 @@ html[dir="rtl"] .pillars-track { animation-direction: reverse; }
     border-top: 1px solid var(--sand-dark);
     box-shadow: 0 20px 30px -20px rgba(28,27,25,0.2);
   }
-  .hero-frame { display: none; }
+  .hero-frame {
+    position: relative;
+    top: auto;
+    inset-inline-end: auto;
+    width: min(65vw, 300px);
+    margin: 3rem auto 0;
+  }
   .about-inner { grid-template-columns: 1fr; }
   .about-card { position: static; margin-top: 1rem; display: inline-block; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
